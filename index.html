@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>LANGUAGE TRANSLATOR</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🌐
+            </div>
+
+            <div>
+                <h1>LANGUAGE TRANSLATOR</h1>
+
+                <p>
+                    Smart Language Translator
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- HISTORY AND FAVORITES BUTTONS -->
+
+        <div class="header-actions">
+
+            <button
+                id="historyBtn"
+                class="header-btn history-btn">
+                🕘 History
+            </button>
+
+
+            <button
+                id="favoritesBtn"
+                class="header-btn favorites-btn">
+                ⭐ Favorites
+            </button>
+
+
+            <button
+                id="themeToggle"
+                class="theme-btn">
+                🌙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- TRANSLATOR -->
+
+        <section class="translator-card">
+
+
+            <!-- LANGUAGE SELECTION -->
+
+            <div class="language-row">
+
+
+                <div class="language-box">
+
+                    <label>
+                        Source Language
+                    </label>
+
+                    <select id="sourceLanguage">
+                    </select>
+
+                </div>
+
+
+                <button
+                    id="swapBtn"
+                    class="swap-btn"
+                    title="Swap Languages">
+
+                    ⇄
+
+                </button>
+
+
+                <div class="language-box">
+
+                    <label>
+                        Target Language
+                    </label>
+
+                    <select id="targetLanguage">
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- TEXT AREAS -->
+
+            <div class="translation-area">
+
+
+                <!-- SOURCE -->
+
+                <div class="text-section">
+
+                    <div class="section-header">
+
+                        <strong>
+                            Enter Text
+                        </strong>
+
+                        <span id="charCount">
+                            0 / 1000
+                        </span>
+
+                    </div>
+
+
+                    <textarea
+                        id="sourceText"
+                        maxlength="1000"
+                        placeholder="Type or paste your text here...">
+                    </textarea>
+
+
+                    <div class="text-actions">
+
+                        <button id="voiceBtn">
+                            🎤 Voice
+                        </button>
+
+                        <button id="clearInputBtn">
+                            ✕ Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSLATION -->
+
+                <div class="text-section">
+
+                    <div class="section-header">
+
+                        <strong>
+                            Translation
+                        </strong>
+
+                        <span id="translationStatus">
+                            Ready
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="translationResult"
+                        class="translation-result">
+
+                        Your translation will appear here...
+
+                    </div>
+
+
+                    <div class="text-actions">
+
+                        <button id="copyBtn">
+                            📋 Copy
+                        </button>
+
+                        <button id="speakBtn">
+                            🔊 Speak
+                        </button>
+
+                        <button id="favoriteBtn">
+                            ☆ Favorite
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRANSLATE -->
+
+            <button
+                id="translateBtn"
+                class="translate-btn">
+
+                Translate
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= HISTORY MODAL ================= -->
+
+    <div
+        id="historyModal"
+        class="feature-overlay">
+
+        <div class="feature-panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    🕘 Translation History
+                </h2>
+
+                <button
+                    class="close-btn"
+                    id="closeHistoryBtn">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <div class="panel-actions">
+
+                <button
+                    id="clearHistoryBtn"
+                    class="clear-btn">
+
+                    🗑 Clear History
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="historyList"
+                class="panel-list">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FAVORITES MODAL ================= -->
+
+    <div
+        id="favoritesModal"
+        class="feature-overlay">
+
+        <div class="feature-panel">
+
+            <div class="panel-header">
+
+                <h2>
+                    ⭐ Favorite Translations
+                </h2>
+
+                <button
+                    class="close-btn"
+                    id="closeFavoritesBtn">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <div class="panel-actions">
+
+                <button
+                    id="clearFavoritesBtn"
+                    class="clear-btn">
+
+                    🗑 Clear Favorites
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="favoritesList"
+                class="panel-list">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CONFIRMATION MODAL ================= -->
+
+    <div
+        id="confirmModal"
+        class="confirm-overlay">
+
+        <div class="confirm-box">
+
+            <div class="confirm-icon">
+                ⚠️
+            </div>
+
+
+            <h2 id="confirmTitle">
+                Confirm Action
+            </h2>
+
+
+            <p id="confirmMessage">
+                Are you sure?
+            </p>
+
+
+            <div class="confirm-buttons">
+
+                <button
+                    id="cancelConfirm"
+                    class="cancel-btn">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    id="confirmAction"
+                    class="confirm-btn">
+
+                    Confirm
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        id="toast"
+        class="toast">
+
+        Message
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 LinguaFlow | CodeAlpha Internship - Task 1
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
